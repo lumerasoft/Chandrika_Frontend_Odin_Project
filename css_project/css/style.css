@@ -1,5 +1,6 @@
 body {
     margin: 10em;
+    margin-bottom: 0%;
     margin-top: 0;
 }
 header {
@@ -115,29 +116,30 @@ header {
     padding-bottom: 3em;
 }
 
-footer {
+.quote {
     background-color: #3882f6;
     color: white;
     padding: 2em;
+    /* width: 100px; */
 }
-.footer-cls {
+.quote-cls {
     display: flex;
 }
-.footer-cls .footer-left-align {
+.quote-cls .quote-left-align {
     margin-right: 10em;
     margin-left: 5em;
     padding: 0%;
 }
-.footer-cls .footer-left-align h5{
+.quote-cls .quote-left-align h5{
     font-size: 18px;
     margin-bottom: 0;
 }
-.footer-cls .footer-left-align p {
+.quote-cls .quote-left-align p {
     margin-top: 0%;
     font-size: 14px;
     font-weight: lighter;
 }
-.footer-cls .footer-right-align button {
+.quote-cls .quote-right-align button {
     float: right;
     color: white;
     background-color: #3882f6;
@@ -146,4 +148,11 @@ footer {
     border: 1px solid white;
     margin-top: 50%;
     
+}
+footer {
+    text-align: center;
+    background-color: #1F2937;
+    color: #fff;
+    padding: 6px 12px;
+    margin-top: 2em;
 }
