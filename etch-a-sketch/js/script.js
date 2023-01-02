@@ -21,8 +21,6 @@ function changeSize(input) {
     if(input >=2 || input<=100) {
         drawGrid(input)
     } else {
-        // document.write("enter range in between 2 and 100")
-        // alert("enter range in between 2 and 100")
         console.log("enter range in between 2 and 100")
     }
 }
