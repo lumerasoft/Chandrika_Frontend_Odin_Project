@@ -1,0 +1,46 @@
+.grid-board {
+    width:500px;
+    height: 500px;
+    display: grid;
+}
+.container {
+    width: 500px;
+    height: 700px;
+    margin: auto;
+    display: grid;
+    border: 2px groove rgb(21, 6, 88);
+    border-radius: 5px;
+    background-color: rgb(247, 247, 255);
+}
+.container .title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-top: 10px;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+button {
+    width: 150px;
+    height: 50px;
+    padding: 0 5px;
+    margin-right: 3px;
+    background-color: cadetblue;
+    border: none;
+    border-radius: 25px;
+}
+button:hover {
+    background-color: rgb(51, 156, 89);
+    color: white;
+    font-size: 15px;
+}
+.content input {
+    width: 120px;
+    height: 30px;
+    margin-left: 100px;
+    border: 2px solid rgb(12, 236, 98);
+}
