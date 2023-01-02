@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title">Sketch Pad</div>
+        <div class="content">
+            <div class="grid-board"></div>
+            <div class="button-container">
+                <!-- <button id="display-gridlines">Show Gridlines</button> -->
+                <button onclick="changeColor('white')">White</button>
+                <button onclick="changeColor('rgb')">RGB</button>
+                <button id="reset-sketchboard">Reset Sketchboard</button>
+                <!-- <button onclick="resetBoard()">Reset</button> -->
+            </div>
+            <div>
+                <input type="text" placeholder="size of grid" value="16" onchange="changeSize(this.value)">
+                <button>set size</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/script.js"></script>
+</body>
+</html>
