@@ -1,0 +1,23 @@
+#container {
+    text-align: center;
+    align-items: center;
+    /* background-color: aqua; */
+    box-sizing: border-box;
+    /* margin: 3em; */
+    /* max-width: 300px; */
+    width: 100%;
+}
+#button-box button {
+    background-color: brown;
+    color: white;
+    padding: 10px;
+    border-radius: 15%;
+    border: none;
+    padding: 1em;
+    margin-right: 20px;
+}
+#game-board p{
+    margin-top: 30px;
+    font-weight: bolder;
+    font-size: 30px;
+}
