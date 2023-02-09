@@ -9,8 +9,14 @@
 </nav>
   <div class="display">
     <p v-for="product in products" :key="product.name">
-      <ProductDetails :name="product.name" :desc="product.desc" :price="product.price" />
+      <ProductDetails :product="product" />
     </p>
+
+      <!-- <ProductDetails
+        v-for="product in products"
+        :key="product.name"
+        :product="product"
+        @view-product="viewProduct($event)" /> -->
   </div>
 
 </template>
@@ -28,23 +34,47 @@ import ProductDetails from './ProductDetails.vue'
         products: []
       }
     },
-    methods: {
-      displayProduct: function() {
-        this.products = JSON.parse(localStorage.getItem("products"))
-      }
-    },
-    mounted() {
-      this.displayProduct();
-    },
     setup() {
       const router = useRouter();
       function create() {
         router.push('/create_product');
       }
+      // function displayDetails() {
+      //   router.push('/show_details')
+      // }
       return {
-        create,
+        create
+        // displayDetails,
       };
-    }
+    },
+    methods: {
+      displayProduct: function() {
+        this.products = JSON.parse(localStorage.getItem("products"))
+      },
+
+      // viewProduct(product) {
+      //   console.log("hii")
+      //   this.product = product
+      //   console.log(this.product)
+      //   this.displayDetails();
+      // }
+    },
+    mounted() {
+      this.displayProduct();
+    },
+    // setup() {
+    //   const router = useRouter();
+    //   function create() {
+    //     router.push('/create_product');
+    //   }
+    //   function viewProduct() {
+    //     router.push('/show_product')
+    //   }
+    //   return {
+    //     create,
+    //     viewProduct,
+    //   };
+    // }
   }
 </script>
 

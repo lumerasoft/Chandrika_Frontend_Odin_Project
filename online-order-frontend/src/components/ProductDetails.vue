@@ -1,23 +1,38 @@
 <template>
   <div class="card">
   <div class="card-body">
-    <h3 class="card-title">{{name}}</h3>
-    <p class="card-text">{{desc}}</p>
-    <p class="card-text">{{quantity}}</p>
-    <p class="card-text"><b>{{price}}</b></p>
-    <a class="product-link" href="">product details</a>
+    <h3 class="card-title">{{product.name}}</h3>
+    <p class="card-text">{{product.desc}}</p>
+    <p class="card-text">{{product.quantity}}</p>
+    <p class="card-text"><b>${{product.price}}</b></p>
+    <router-link :to="`/products/${product.name}`">View Product</router-link>
+    <!-- <button  class="button" v-on:click="view" type="button">View Product</button> -->
   </div>
 </div>
 </template>
 <script>
+// import { useRouter } from 'vue-router'
 export default {
   name: "productDetails",
-  props: {
-    name: String,
-    desc: String,
-    price: Number,
-    quantity: Number
-  }
+  props: ['product'],
+
+  // props: {
+  //   name: String,
+  //   desc: String,
+  //   price: Number,
+  //   quantity: Number,
+
+  // }
+  // setup() {
+  //     const router = useRouter();
+  //     function view() {
+
+  //       router.push("`/products/${name}`");
+  //     }
+  //     return {
+  //       view,
+  //     };
+  //   }
 }
 </script>
 

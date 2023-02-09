@@ -10,7 +10,9 @@
       <input type="text" id="price" class="form-control" v-model="price">
       <label class="form-label"><b>Quantity</b></label>
       <input type="text" id="quantity" class="form-control" v-model="quantity"><br/>
+
       <button v-on:click="create" type="submit">Create</button>
+      <button class="button" v-on:click="goBack" type="button">Back</button>
     </form>
   </div>
 </template>
@@ -72,6 +74,7 @@ import { useRouter } from 'vue-router'
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .mb-3 button {
+  margin: 10px;
   padding: 10px;
   border: 2px;
   background-color: #5F9EA0;
