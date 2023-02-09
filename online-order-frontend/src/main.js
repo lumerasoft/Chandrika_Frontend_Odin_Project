@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import CreateProduct from './components/CreateProduct.vue'
 import ListProducts from './components/ListProducts.vue'
+import ShowProduct from './components/ShowProduct.vue'
 
 const routes = [
   {
@@ -20,6 +21,10 @@ const routes = [
     path: '/products',
     component: ListProducts,
   },
+  {
+    path: '/products/:name',
+    component: ShowProduct
+  }
 ];
 
 const router = createRouter({
