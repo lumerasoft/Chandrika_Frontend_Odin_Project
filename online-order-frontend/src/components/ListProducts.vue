@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
 import ProductDetails from './ProductDetails.vue'
   export default {
     name: "ListProducts",
@@ -34,6 +35,15 @@ import ProductDetails from './ProductDetails.vue'
     },
     mounted() {
       this.displayProduct();
+    },
+    setup() {
+      const router = useRouter();
+      function create() {
+        router.push('/create_product');
+      }
+      return {
+        create,
+      };
     }
   }
 </script>
@@ -42,5 +52,14 @@ import ProductDetails from './ProductDetails.vue'
 
   .display {
     text-align: left;
+  }
+  button {
+    padding: 10px;
+    border: 2px;
+    background-color: #5F9EA0;
+    color: white;
+  }
+  button:hover {
+    background-color: #808080;
   }
 </style>
