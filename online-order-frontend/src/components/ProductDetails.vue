@@ -5,7 +5,7 @@
     <p class="card-text">{{desc}}</p>
     <p class="card-text">{{quantity}}</p>
     <p class="card-text"><b>{{price}}</b></p>
-    <a class="product-link" href="">product details here</a>
+    <a class="product-link" href="">product details</a>
   </div>
 </div>
 </template>
