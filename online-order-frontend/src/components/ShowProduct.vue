@@ -1,7 +1,7 @@
 <template>
 <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
-      <h1>Product description is here</h1>
+      <h1>Product description</h1>
     <form class="d-flex" role="search">
       <button class="button" v-on:click="back" type="button">Back</button>
     </form>
@@ -13,9 +13,9 @@
     <h3 class="card-title">{{name}}</h3>
     <p class="card-text">{{product.desc}}</p>
     <p class="card-text">{{product.quantity}}</p>
-    <p class="card-text"><b>{{product.price}}</b></p>
+    <p class="card-text"><b>${{product.price}}</b></p>
    </div>
-</div>
+</div><br/>
 <AddReview />
 </template>
 
@@ -60,3 +60,20 @@ import AddReview from './AddReview.vue'
     },
   }
 </script>
+<style>
+.card {
+  width: 100%;
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+button {
+    padding: 10px;
+    border: 2px;
+    background-color: #5F9EA0;
+    color: white;
+  }
+  button:hover {
+    background-color: #808080;
+  }
+</style>
