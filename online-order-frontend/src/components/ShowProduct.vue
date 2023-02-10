@@ -8,24 +8,20 @@
   </div>
 </nav>
 
-
   <div class="card">
   <div class="card-body">
     <h3 class="card-title">{{name}}</h3>
     <p class="card-text">{{product.desc}}</p>
     <p class="card-text">{{product.quantity}}</p>
     <p class="card-text"><b>{{product.price}}</b></p>
-    <!-- <button class="view-product-button" @click="$emit('view-product', product)">View Product</button> -->
    </div>
 </div>
-<!-- Reviews (0) -->
 <AddReview />
 </template>
 
 <script>
 import { useRouter } from 'vue-router'
 import AddReview from './AddReview.vue'
-// import ProductDetails from './ProductDetails.vue'
 
   export default {
     name: "ShowProduct",
@@ -51,7 +47,6 @@ import AddReview from './AddReview.vue'
 
     mounted() {
       this.loadProducts();
-      // this.created();
 
     },
     setup() {
@@ -59,14 +54,9 @@ import AddReview from './AddReview.vue'
       function back() {
         router.push('/products');
       }
-      // function displayDetails() {
-      //   router.push('/show_details')
-      // }
       return {
         back
-        // displayDetails,
       };
     },
-    // props: ['product']
   }
 </script>
