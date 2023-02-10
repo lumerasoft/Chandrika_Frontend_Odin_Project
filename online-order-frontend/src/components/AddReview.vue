@@ -2,19 +2,17 @@
 <h1>Add Review</h1>
   <div class="mb-3">
     <form>
-      <label class="form-label"><b>Review</b></label>
-      <input type="text" id="review" class="form-control" v-model="review">
+      <label class="form-label"><b>Add your review here</b></label>
+      <textarea id="review" class="form-control" v-model="review"></textarea><br/>
       <button v-on:click="create" type="button">Create</button>
     </form>
   </div>
-  <p>Reviews: {{this.count}}</p>
-    <!-- <p class="card-text">{{this.review}}</p> -->
-    <!-- <p v-for="review in reviews" :key="review"> </p> -->
-      <li class="card-text" v-for="review in reviews" :key="review">{{review.review}}</li>
-    <!-- </p> -->
-
-<!-- <p class="card-text" v-for="review in reviews" :key="review">{{review}}</p> -->
-<!-- <li v-for="review in displayReview" :key="review">{{review}}</li> -->
+    <div class="display">
+    <h4>Reviews({{count}})</h4>
+    <div v-bind:key="review.name" v-for="review in reviews">
+      <h5 class="card-text">{{review.review}}</h5>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -23,41 +21,59 @@
 
     data() {
       return {
+        name: this.$route.params.name,
         review: '',
         reviews: [],
-        count: ''
+        count: '',
+        product: {}
       }
     },
 
     methods: {
-      // displayReview() {
-      //   this.products = JSON.parse(localStorage.getItem("reviews"))
-      // },
+      loadReviews() {
+        const reviews = JSON.parse(localStorage.getItem("reviews"));
+        this.reviews = reviews.filter((review) => review.name == this.name)
+        this.count = this.reviews.length
+    },
 
       create() {
         console.log("hii")
         let existing_reviews = JSON.parse(localStorage.getItem("reviews"))
-        // let parsed_data = JSON.parse(existing_reviews)
-        let new_review = {review: this.review}
+        let new_review = {review: this.review, name: this.name}
         existing_reviews.push(new_review)
         localStorage.setItem("reviews",JSON.stringify(existing_reviews))
         console.log(existing_reviews)
 
         this.review = ""
       },
-      getCount(){
-        this.count = JSON.parse(localStorage.getItem("reviews")).length
-      },
-      displayReview() {
-        this.reviews = JSON.parse(localStorage.getItem("reviews"))
-        // this.review = JSON.parse(localStorage.getItem("reviews"))
-        // return this.review
-
-      }
     },
     mounted() {
-      this.getCount();
-      this.displayReview();
+      this.loadReviews();
     }
   }
 </script>
+
+<style>
+h1 {
+  text-align: left;
+}
+.mb-3 {
+  text-align: left;
+}
+.form-control {
+  width:50%;
+  height: 60%;
+}
+.display {
+  text-align: left;
+}
+button {
+    padding: 10px;
+    border: 2px;
+    background-color: #5F9EA0;
+    color: white;
+  }
+  button:hover {
+    background-color: #808080;
+  }
+</style>
