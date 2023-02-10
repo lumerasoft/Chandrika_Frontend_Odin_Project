@@ -12,39 +12,47 @@
   <div class="card">
   <div class="card-body">
     <h3 class="card-title">{{name}}</h3>
-    <p class="card-text">{{desc}}</p>
-    <p class="card-text">{{quantity}}</p>
-    <p class="card-text"><b>{{price}}</b></p>
+    <p class="card-text">{{product.desc}}</p>
+    <p class="card-text">{{product.quantity}}</p>
+    <p class="card-text"><b>{{product.price}}</b></p>
     <!-- <button class="view-product-button" @click="$emit('view-product', product)">View Product</button> -->
    </div>
 </div>
 <!-- Reviews (0) -->
-<!-- <AddReview /> -->
+<AddReview />
 </template>
 
 <script>
 import { useRouter } from 'vue-router'
-// import AddReview from './AddReview.vue'
+import AddReview from './AddReview.vue'
 // import ProductDetails from './ProductDetails.vue'
 
   export default {
     name: "ShowProduct",
-    // components: {
-    //   AddReview
-    // },
+    components: {
+      AddReview
+    },
     data() {
       return {
         name: '',
-        product: ''
+        product: {}
       }
     },
     methods:{
-      created() {
-        this.name = this.$route.params.name
+      loadProducts() {
+        const products = JSON.parse(localStorage.getItem("products"));
+        let product = products.find((product) => product.name == this.name)
+        this.product = product
       }
     },
+    created() {
+        this.name = this.$route.params.name
+    },
+
     mounted() {
-      this.created();
+      this.loadProducts();
+      // this.created();
+
     },
     setup() {
       const router = useRouter();
