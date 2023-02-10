@@ -1,5 +1,5 @@
 <template>
-  <h1>Product creation </h1><br/>
+  <h1>Create Product</h1><br/>
   <div class="mb-3">
     <form>
       <label class="form-label"><b>Name</b></label>
@@ -62,6 +62,9 @@ import { useRouter } from 'vue-router'
 </script>
 
 <style scoped>
+h1 {
+  text-align: center;
+}
 .mb-3 {
   text-align: center;
   align-items: center;

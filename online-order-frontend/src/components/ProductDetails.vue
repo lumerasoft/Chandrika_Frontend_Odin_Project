@@ -6,33 +6,14 @@
     <p class="card-text">{{product.quantity}}</p>
     <p class="card-text"><b>${{product.price}}</b></p>
     <router-link :to="`/products/${product.name}`">View Product</router-link>
-    <!-- <button  class="button" v-on:click="view" type="button">View Product</button> -->
   </div>
 </div>
 </template>
 <script>
-// import { useRouter } from 'vue-router'
 export default {
   name: "productDetails",
   props: ['product'],
 
-  // props: {
-  //   name: String,
-  //   desc: String,
-  //   price: Number,
-  //   quantity: Number,
-
-  // }
-  // setup() {
-  //     const router = useRouter();
-  //     function view() {
-
-  //       router.push("`/products/${name}`");
-  //     }
-  //     return {
-  //       view,
-  //     };
-  //   }
 }
 </script>
 
