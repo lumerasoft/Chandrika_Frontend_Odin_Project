@@ -9,13 +9,14 @@
 </nav>
   <div class="display">
     <p v-for="product in products" :key="product.name">
-      <ProductDetails :name="product.name" :desc="product.desc" :price="product.price" />
+      <ProductDetails :product="product" />
     </p>
   </div>
 
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
 import ProductDetails from './ProductDetails.vue'
   export default {
     name: "ListProducts",
@@ -27,14 +28,23 @@ import ProductDetails from './ProductDetails.vue'
         products: []
       }
     },
+    setup() {
+      const router = useRouter();
+      function create() {
+        router.push('/create_product');
+      }
+      return {
+        create
+      };
+    },
     methods: {
       displayProduct: function() {
         this.products = JSON.parse(localStorage.getItem("products"))
-      }
+      },
     },
     mounted() {
       this.displayProduct();
-    }
+    },
   }
 </script>
 
@@ -42,5 +52,14 @@ import ProductDetails from './ProductDetails.vue'
 
   .display {
     text-align: left;
+  }
+  button {
+    padding: 10px;
+    border: 2px;
+    background-color: #5F9EA0;
+    color: white;
+  }
+  button:hover {
+    background-color: #808080;
   }
 </style>

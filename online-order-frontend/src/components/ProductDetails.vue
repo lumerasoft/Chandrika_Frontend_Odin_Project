@@ -1,23 +1,19 @@
 <template>
   <div class="card">
   <div class="card-body">
-    <h3 class="card-title">{{name}}</h3>
-    <p class="card-text">{{desc}}</p>
-    <p class="card-text">{{quantity}}</p>
-    <p class="card-text"><b>{{price}}</b></p>
-    <a class="product-link" href="">product details here</a>
+    <h3 class="card-title">{{product.name}}</h3>
+    <p class="card-text">{{product.desc}}</p>
+    <p class="card-text">{{product.quantity}}</p>
+    <p class="card-text"><b>${{product.price}}</b></p>
+    <router-link :to="`/products/${product.name}`">View Product</router-link>
   </div>
 </div>
 </template>
 <script>
 export default {
   name: "productDetails",
-  props: {
-    name: String,
-    desc: String,
-    price: Number,
-    quantity: Number
-  }
+  props: ['product'],
+
 }
 </script>
 
