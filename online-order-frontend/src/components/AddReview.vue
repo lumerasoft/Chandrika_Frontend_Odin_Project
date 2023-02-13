@@ -3,13 +3,13 @@
   <div class="mb-3">
     <form>
       <label class="form-label"><b>Add your review here</b></label>
-      <textarea id="review" class="form-control" v-model="review"></textarea><br/>
+      <textarea id="review" class="form-control" v-model="review.review"></textarea><br/>
       <button v-on:click="create" type="button">Create</button>
     </form>
   </div>
     <div class="display">
-    <h4>Reviews({{count}})</h4>
-    <div v-bind:key="review.name" v-for="review in reviews">
+    <h4>Reviews({{countReviews}})</h4>
+    <div v-bind:key="review.name" v-for="review in currentReviews">
       <h5 class="card-text">{{review.review}}</h5>
     </div>
   </div>
@@ -21,34 +21,31 @@
 
     data() {
       return {
-        name: this.$route.params.name,
-        review: '',
-        reviews: [],
-        count: '',
-        product: {}
+        review: {
+          name: this.$route.params.name,
+          review: ''
+        },
+        currentReviews: (JSON.parse(localStorage.getItem("reviews")).filter((review) => review.name == this.$route.params.name)),
+        otherReviews: (JSON.parse(localStorage.getItem("reviews")).filter((review) => review.name != this.$route.params.name))
       }
     },
-
-    methods: {
-      loadReviews() {
-        const reviews = JSON.parse(localStorage.getItem("reviews"));
-        this.reviews = reviews.filter((review) => review.name == this.name)
-        this.count = this.reviews.length
+    computed: {
+      countReviews() {
+        return this.currentReviews.length
+      }
     },
+    methods: {
 
       create() {
         console.log("hii")
-        let existing_reviews = JSON.parse(localStorage.getItem("reviews"))
-        let new_review = {review: this.review, name: this.name}
-        existing_reviews.push(new_review)
-        localStorage.setItem("reviews",JSON.stringify(existing_reviews))
-        console.log(existing_reviews)
-
-        this.review = ""
+        this.currentReviews.push(this.review)
+        const allReviews = this.currentReviews.concat(this.otherReviews)
+        localStorage.setItem("reviews",JSON.stringify(allReviews))
+        this.review = {
+          name: this.$route.params.name,
+          review: ""
+        }
       },
-    },
-    mounted() {
-      this.loadReviews();
     }
   }
 </script>
